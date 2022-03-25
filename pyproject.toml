@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "philiprehberger-secret-mask"
-version = "0.1.0"
+version = "0.1.1"
 description = "Automatically detect and mask secrets in strings and dicts."
 readme = "README.md"
 license = "MIT"
