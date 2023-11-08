@@ -4,7 +4,7 @@ from __future__ import annotations
 
 import re
 
-__all__ = ["is_secret_key", "mask_value", "mask_secrets"]
+__all__ = ["is_secret_key", "mask_value", "mask_secrets", "register_pattern", "register_key"]
 
 _SECRET_PATTERNS: list[re.Pattern[str]] = [
     re.compile(r"sk-[A-Za-z0-9]{20,}"),
@@ -27,6 +27,30 @@ _SECRET_KEY_NAMES: set[str] = {
     "private_key",
     "access_key",
 }
+
+
+def register_pattern(pattern: str) -> None:
+    """Register a custom regex pattern for secret detection.
+
+    The pattern is compiled and appended to the internal list used by
+    :func:`mask_secrets` when scanning strings.
+
+    Args:
+        pattern: A regular-expression string to match secret values.
+    """
+    _SECRET_PATTERNS.append(re.compile(pattern))
+
+
+def register_key(key: str) -> None:
+    """Register a custom key name for secret key detection.
+
+    The key is normalised to lowercase and added to the internal set
+    used by :func:`is_secret_key`.
+
+    Args:
+        key: A key name substring that indicates a secret (case-insensitive).
+    """
+    _SECRET_KEY_NAMES.add(key.lower())
 
 
 def is_secret_key(key: str) -> bool:

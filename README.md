@@ -42,6 +42,23 @@ is_secret_key("api_key")       # True
 is_secret_key("username")      # False
 ```
 
+### Custom Patterns
+
+```python
+from philiprehberger_secret_mask import register_pattern, register_key, mask_secrets, is_secret_key
+
+# Register a custom regex pattern for string scanning
+register_pattern(r"CUSTOM-[A-Za-z0-9]{8,}")
+mask_secrets("key is CUSTOM-abcdefghij")
+# "key is **************ghij"
+
+# Register a custom key name for dict masking
+register_key("ssn")
+is_secret_key("ssn")        # True
+mask_secrets({"ssn": "123-45-6789"})
+# {"ssn": "*******6789"}
+```
+
 ### Custom Masking
 
 ```python
@@ -58,6 +75,8 @@ mask_value("supersecret", mask_char="#", reveal_last=2)
 | `mask_secrets(data, *, mask_char, reveal_last)` | Detect and mask secrets in a string, dict, or list |
 | `mask_value(value, *, mask_char, reveal_last)` | Mask a single string value |
 | `is_secret_key(key)` | Check if a key name matches known secret patterns |
+| `register_pattern(pattern)` | Register a custom regex pattern for secret detection |
+| `register_key(key)` | Register a custom key name for secret key detection |
 | `_SECRET_PATTERNS` | Compiled regexes for secret patterns in strings |
 | `_SECRET_KEY_NAMES` | Set of key name substrings that indicate secrets |
 
