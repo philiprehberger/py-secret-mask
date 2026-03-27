@@ -3,6 +3,7 @@
 [![Tests](https://github.com/philiprehberger/py-secret-mask/actions/workflows/publish.yml/badge.svg)](https://github.com/philiprehberger/py-secret-mask/actions/workflows/publish.yml)
 [![PyPI version](https://img.shields.io/pypi/v/philiprehberger-secret-mask.svg)](https://pypi.org/project/philiprehberger-secret-mask/)
 [![License](https://img.shields.io/github/license/philiprehberger/py-secret-mask)](LICENSE)
+[![Sponsor](https://img.shields.io/badge/sponsor-GitHub%20Sponsors-ec6cb9)](https://github.com/sponsors/philiprehberger)
 
 Automatically detect and mask secrets in strings and dicts.
 
