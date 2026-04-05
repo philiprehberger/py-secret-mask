@@ -1,5 +1,10 @@
 # Changelog
 
+
+## 0.2.0 (2026-04-04)
+
+- Add `register_pattern` function for custom secret detection patterns
+- Add `register_key` function for custom secret key names
 ## 0.1.1 (2026-03-31)
 
 - Standardize README to 3-badge format with emoji Support section
